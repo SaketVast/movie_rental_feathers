@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaprokor</title>
+    <link rel="stylesheet" href="kaprikor.css">
+    <style>
+        table, tr,td {
+          border:1px solid black;
+          font-size: 20px;
+        }
+        </style>
+    
+</head>
+<body>
+    <!-- <p>Enter Number</p> -->
+
+       Enter number: <input type="text" id="textNumber">
+        <button onclick="takeNumber()"> click me</button>
+        <p id="output"> output</p>
+     <!-- <div> <p id="output1"></p>   <p id="output2">  </p>   <p id="output3"></p></div> -->
+
+        <table id="border">
+           
+            <tbody>
+                <tr id="row">
+                    <td id="output1"> </td>
+                    <td id="output2"> </td>
+                    <td id="output3"> </td>
+                  </tr>
+            </tbody>
+        </table>
+    <script>
+    function takeNumber(){
+        let textNumber = document.getElementById("textNumber").value;
+        document.getElementById("output1").innerHTML ="";
+        document.getElementById("output2").innerHTML ="";
+        document.getElementById("output3").innerHTML ="";
+        document.getElementById("output").innerText= "Original Number is "+textNumber;
+        console.log(textNumber);
+        number(textNumber);
+
+    }
+   
+    function number(num) {
+    
+        // console.log('The number is ',num);
+        //  let number = document.getElementById("output").innerHTML= num;
+        let numStr= num.toString();
+        let numSort=numStr.split('');
+        numSort.sort(function(a,b)
+        {return(b-a)});
+        let des=numSort.join('');
+        console.log('Desending order is ',des);
+        let des1 = document.getElementById("output1").innerHTML;
+        document.getElementById("output1").innerHTML = des1  +" <br/>  Desending order is "+des;
+        let numReverse=numSort.reverse();
+        let ase=numReverse.join('');
+        console.log('Assending order is',ase);
+        let ase1 =  document.getElementById("output2").innerHTML;
+        document.getElementById("output2").innerHTML = ase1 + " <br/> Ascending order is " + ase ;
+        let diff=parseInt(des)-parseInt(ase);
+        console.log('The difference is ',diff);
+        let diff1 = document.getElementById("output3").innerHTML;
+        document.getElementById("output3").innerHTML = diff1 + " <br/> Difference is "+diff;
+        if (diff == 6174)
+        {
+            console.log('number reached to 6174');
+            return;
+        }
+        number(diff);
+ 
+    }
+
+    </script>
+</body>
+</html>
